@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /sushiswap-v3/
+Sitemap: https://sushiswap-v3.github.io/sitemap.xml
