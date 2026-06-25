@@ -1,22 +1,22 @@
 {
-  "name": "SushiSwap",
-  "short_name": "SushiSwap",
+  "name": "SushiSwap v3",
+  "short_name": "SushiSwap v3",
+  "description": "SushiSwap v3 lets you swap on SushiSwap's V3 concentrated-liquidity pools from your own wallet.",
+  "start_url": "https://sushiswap-v3.github.io/",
+  "scope": "https://sushiswap-v3.github.io/",
+  "display": "standalone",
+  "background_color": "#07101D",
+  "theme_color": "#07101D",
   "icons": [
     {
-      "src": "static/icon-192.png",
+      "src": "favicon.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable"
+      "type": "image/png"
     },
     {
-      "src": "static/icon-512.png",
+      "src": "favicon.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable"
+      "type": "image/png"
     }
-  ],
-  "theme_color": "#0E0B23",
-  "background_color": "#0E0B23",
-  "display": "standalone",
-  "start_url": "./"
+  ]
 }
