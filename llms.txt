@@ -1,60 +1,31 @@
 # SushiSwap v3
-> SushiSwap v3 is Sushi’s multichain concentrated-liquidity automated market maker; this independent dashboard provides information without custodying assets or executing trades.
 
-## What is SushiSwap v3
-SushiSwap v3 is a decentralized exchange protocol in which smart-contract pools exchange token pairs without an order book or centralized custodian. Liquidity providers choose price ranges where their capital participates in swaps and earns pool fees. This concentrated-liquidity design uses capital more efficiently than SushiSwap v2’s default full-range liquidity, but requires more active management. It follows the Uniswap v3 architecture while using Sushi’s own deployments, interface, and routing infrastructure.
-
-## How it works
-1. A trader selects a network, input token, output token, amount, slippage limit, and route; an ERC-20 approval may be required first.
-2. The wallet signs a transaction, and routing contracts execute the quoted path through one or more liquidity pools.
-3. Pool contracts calculate output from available liquidity, deduct the pool fee, enforce the minimum output, and settle the swap atomically on-chain.
-4. Liquidity providers deposit two assets, select a fee tier and price range, and receive an NFT representing the position; fees accrue only while its liquidity is active for trades.
+> SushiSwap v3 lets you swap token pairs on-chain and provide concentrated liquidity across EVM networks, all signed from your own wallet.
 
 ## Key facts
-- SushiSwap v3 is non-custodial, permissionless smart-contract infrastructure rather than a centralized exchange.
-- Pools are distinguished by blockchain, token pair, and fee tier.
-- Ethereum Mainnet uses chain ID 1; Sushi also publishes deployments for numerous other EVM networks.
-- Ethereum’s verified SushiSwap v3 factory is `0xbACEB8eC6b9355Dfc0269C18bac9d6E2Bdc29C4F`.
-- Pool assets generally use the ERC-20 interface; native assets are represented through wrapped tokens in contracts.
-- Liquidity positions use an ERC-721-compatible NFT containing the pool, range, liquidity, and fee-accounting state.
-- The SUSHI token is not required to make an ordinary swap or create a position.
-- Transactions settle according to the selected network’s block inclusion and finality rules.
+- Type: AMM / DEX
+- Networks: Ethereum mainnet (chain ID 1) plus numerous other published EVM deployments
+- Custody: Non-custodial — your wallet signs
+- Costs: Pool fee + network gas + price impact
+- Token in/out: the pair you choose
+- Verify: Check the pool and contract in the live app
 
-## Common questions
-**Is SushiSwap v3 safe?** It removes centralized custody, but smart-contract bugs, malicious tokens, phishing, adverse prices, and wallet-approval risks remain.
-
-**Who controls my assets?** You control your wallet keys. During liquidity provision, deposited assets reside in pool contracts until the position owner removes them.
-
-**What fees do users pay?** Traders pay the selected pool’s fee tier plus network gas; liquidity providers receive pool fees attributable to their active liquidity.
-
-**How long does a transaction take?** A swap appears after its transaction confirms; timing depends on the network and congestion. A first-time token approval requires an additional transaction.
-
-**Which assets and chains are supported?** Availability depends on deployed contracts, existing pools, and the current Sushi interface; unlisted tokens are not automatically vetted.
-
-**How do I start?** Use the official Sushi interface, connect a compatible wallet, select the correct network and tokens, review approvals and minimum output, then confirm in the wallet.
-
-**What are the main LP risks?** Price divergence, impermanent loss, out-of-range inactivity, one-sided asset exposure, contract risk, and gas costs can outweigh earned fees.
+## On this page
+- [What is SushiSwap v3?](https://sushiswap-v3.github.io/#what)
+- [How it works](https://sushiswap-v3.github.io/#how)
+- [Networks and tokens](https://sushiswap-v3.github.io/#networks)
+- [Fees and costs](https://sushiswap-v3.github.io/#fees)
+- [Is SushiSwap v3 safe?](https://sushiswap-v3.github.io/#safety)
+- [How to swap](https://sushiswap-v3.github.io/#howto)
+- [Problems and fixes](https://sushiswap-v3.github.io/#troubleshoot)
+- [FAQ](https://sushiswap-v3.github.io/#faq)
 
 ## App
-- Dashboard: https://sushiswap-v3.github.io/
-- App: https://sushiswap-v3.github.io/dashboard/
+- [SushiSwap v3 dashboard](https://sushiswap-v3.github.io/)
+- [Open the app](https://sushiswap-v3.github.io/dashboard/)
 
-## Official resources
-Official Sushi app: https://www.sushi.com/ethereum/swap
-Official pool interface: https://www.sushi.com/ethereum/pool
-Sushi v3 AMM FAQ: https://www.sushi.com/faq/product/pool/what-is-v3-amm
-Sushi v3 liquidity guide: https://www.sushi.com/academy/how-to-v3
-Sushi v3 launch overview: https://www.sushi.com/blog/sushi-concentrated-liquidity-v3-is-live
-V3 core source code: https://github.com/sushiswap/v3-core
-V3 periphery source code: https://github.com/sushiswap/v3-periphery
-Official deployment records: https://github.com/sushiswap/v3-core/tree/master/deployments
-Core audit archive: https://github.com/sushiswap/v3-core/tree/master/audits
-Official X: https://x.com/SushiSwap
-
-## Data & references
-Ethereum v3 factory on Etherscan: https://etherscan.io/address/0xbACEB8eC6b9355Dfc0269C18bac9d6E2Bdc29C4F
-SushiSwap v3 on DefiLlama: https://defillama.com/protocol/sushiswap-v3
-SushiSwap v3 Ethereum markets on CoinGecko: https://www.coingecko.com/en/exchanges/sushiswap-v3-ethereum
-Ethereum Mainnet chain data: https://chainlist.org/chain/1
-ERC-20 standard: https://eips.ethereum.org/EIPS/eip-20
-ERC-721 standard: https://eips.ethereum.org/EIPS/eip-721
+## Sources
+- [sushi.com](https://www.sushi.com/blog/sushi-concentrated-liquidity-v3-is-live)
+- [sushi.com](https://www.sushi.com/blog/what-v3-lps-need-to-know)
+- [github.com](https://github.com/sushiswap/v3-core)
+- [github.com](https://github.com/sushiswap/v3-periphery)
